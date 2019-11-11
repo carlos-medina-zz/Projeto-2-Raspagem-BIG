@@ -14,24 +14,31 @@ indice_tabelas = 3
 # Seleciona todas as linhas das três tabelas de interesse a partir da tag tr
 linhas_tabelas = tabelas[indice_tabelas].find_all("tr")
 
-# Título da tabela 1 que está na linha de índice 1 entre as tags b
+# Retirada do título da tabela 1 que está na linha de índice 1 entre as tags b. Como o método find_all() 
+# retorna uma string é necessário acessar o elemento [0]
 titulo_tabela1 = linhas_tabelas[1].find_all('b')[0].get_text()
 
 # Retirada de alguns espaços extras em branco e lineskips
 titulo_tabela1 = " ".join(titulo_tabela1.split())
 
-# Dados da segundo linha da tabela que está entre as tags font
+# Retirada a linha da tabela que contém o nome de cada coluna. Ela está entre as tags font
 linha1_tabela1 = linhas_tabelas[2].find_all('font')
 
 # Limpeza dos dados da segundo linha da tabela
 linha1_tabela1 = [item.get_text() for item in linha1_tabela1]
-print(linha1_tabela1)
 
 # Retirada de alguns espaços extras em branco e lineskips
 linha1_tabela1 = [" ".join(item.split()) for item in linha1_tabela1]
-print(linha1_tabela1)
 
-# Título da tabela 1 -> linhas_tabelas[1]
+# Linha 2 da tabela semelhante ao código acima
+# A diferença é que o primeiro elemento esta entre as tags a enquanto os outros estão entre font
+linha2_tabela1 = linhas_tabelas[3].find_all('font')
+linha2_tabela1 = [item.get_text() for item in linha2_tabela1]
+linha2_tabela1 = [" ".join(item.split()) for item in linha2_tabela1]
+
+
+
+
 # Índice da tabela 1 -> linhas_tabelas[2]
 # Valores da tabela 1 -> linhas_tabelas[3] a linhas_tabelas[11]
 
