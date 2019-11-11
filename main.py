@@ -19,7 +19,17 @@ titulo_tabela1 = linhas_tabelas[1].find_all('b')[0].get_text()
 
 # Retirada de alguns espaços extras em branco e lineskips
 titulo_tabela1 = " ".join(titulo_tabela1.split())
-print(len(titulo_tabela1))
+
+# Dados da segundo linha da tabela que está entre as tags font
+linha1_tabela1 = linhas_tabelas[2].find_all('font')
+
+# Limpeza dos dados da segundo linha da tabela
+linha1_tabela1 = [item.get_text() for item in linha1_tabela1]
+print(linha1_tabela1)
+
+# Retirada de alguns espaços extras em branco e lineskips
+linha1_tabela1 = [" ".join(item.split()) for item in linha1_tabela1]
+print(linha1_tabela1)
 
 # Título da tabela 1 -> linhas_tabelas[1]
 # Índice da tabela 1 -> linhas_tabelas[2]
