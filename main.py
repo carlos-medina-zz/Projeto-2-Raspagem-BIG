@@ -45,8 +45,8 @@ def armazena_linha_tabela (linhas_tabela, tag):
 
     return (linha_tabela)
 
-linha_tabela = armazena_linha_tabela(linhas_tabelas[3], "font")
-print(linha_tabela)
+linha2_tabela1 = armazena_linha_tabela(linhas_tabelas[3], "font")
+print(linha2_tabela1)
 
 # Índice da tabela 1 -> linhas_tabelas[2]
 # Valores da tabela 1 -> linhas_tabelas[3] a linhas_tabelas[11]
