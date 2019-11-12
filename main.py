@@ -30,23 +30,29 @@ linha1_tabela1 = [item.get_text() for item in linha1_tabela1]
 # Retirada de alguns espaços extras em branco e lineskips
 linha1_tabela1 = [" ".join(item.split()) for item in linha1_tabela1]
 
-'''
-# Linha 2 da tabela semelhante ao código acima
-# A diferença é que o primeiro elemento esta entre as tags a enquanto os outros estão entre font
-linha2_tabela1 = linhas_tabelas[3].find_all('font')
-linha2_tabela1 = [item.get_text() for item in linha2_tabela1]
-linha2_tabela1 = [" ".join(item.split()) for item in linha2_tabela1]
-'''
-
-def armazena_linha_tabela (linhas_tabela, tag):
-    linha_tabela = linhas_tabela.find_all(tag)
+# Função que executa as três linhas acima. Também funciona para retirar o título da tabela
+def armazena_linha_tabela (linha_tabela, tag):
+    linha_tabela = linha_tabela.find_all(tag)
     linha_tabela = [item.get_text() for item in linha_tabela]
     linha_tabela = [" ".join(item.split()) for item in linha_tabela]
 
     return (linha_tabela)
 
-linha2_tabela1 = armazena_linha_tabela(linhas_tabelas[3], "font")
-print(linha2_tabela1)
+linhas_tabelas[3] = armazena_linha_tabela(linhas_tabelas[3], "font")
+print(len(linhas_tabelas[3]))
 
-# Índice da tabela 1 -> linhas_tabelas[2]
-# Valores da tabela 1 -> linhas_tabelas[3] a linhas_tabelas[11]
+# Lista que contém em cada elemento informações sobre cada linha da tabela. Cada elemento é outra lista
+# que contém o índice da sua posição na tabela e a tag para ser encontrado
+# O primeiro elemento refere-se ao título, o segundo ao nome das colunas e ao restante os valores
+info_tabela1 = [[1, "b"],
+                [2, "font"],
+                [3, "font"],
+                [4, "font"],
+                [5, "font"],
+                [6, "font"],
+                [7, "font"],
+                [8, "font"],
+                [9, "font"],
+                [10, "font"],
+                [11, "font"],              
+]
