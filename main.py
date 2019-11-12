@@ -10,9 +10,9 @@ def armazena_linha_tabela (linha_tabela, tag):
 
     return (linha_tabela)
 
-# Função similar a armazena_linha_tabela mas que recebe duas tags. Criada para ler 1) a primeira coluna das linhas
-# de dados das tabelas 2 e 3 que possuia uma tag distinta dos outros dados 2) as outras colunas com tags iguais e
-# depois juntar as duas
+# Função similar a armazena_linha_tabela mas que recebe duas tags. Criada para 1) ler a primeira coluna das linhas
+# de dados das tabelas 2 e 3 que possui uma tag distinta dos outros dados 2) ler as outras colunas que possuem só uma tag
+# 3) juntar as duas leituras em uma única variável
 def armazena_linha_tabela2 (linha_tabela, tag1, tag2):
     linha_tabela1 = armazena_linha_tabela(linha_tabela, tag1)
     linha_tabela2 = armazena_linha_tabela(linha_tabela, tag2)
@@ -22,8 +22,8 @@ def armazena_linha_tabela2 (linha_tabela, tag1, tag2):
     return (linha_tabela)
 
 # Lista que contém em cada elemento informações sobre cada linha da tabela. Cada elemento é outra lista
-# que contém o índice da sua posição na tabela e a tag para ser encontrado
-# O primeiro elemento refere-se ao título, o segundo ao nome das colunas e ao restante os valores
+# que contém o índice da sua posição na tabela e a tag para cada item da linha ser encontrado, respectivamente.
+# O primeiro elemento da lista mãe refere-se ao título, o segundo ao nome das colunas e o restante as demais linhas.
 info_tabela1 = [[1, "b"],
                 [2, "font"],
                 [3, "font"],
