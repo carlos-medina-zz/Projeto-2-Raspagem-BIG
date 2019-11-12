@@ -10,15 +10,13 @@ def armazena_linha_tabela (linha_tabela, tag):
 
     return (linha_tabela)
 
-# Função similar a armazena_linha_tabela mas que recebe duas tags. Criada para ler a primeira coluna das linhas
-# de dados das tabelas 2 e 3 que possuia uma tag distinta dos outros dados
+# Função similar a armazena_linha_tabela mas que recebe duas tags. Criada para ler 1) a primeira coluna das linhas
+# de dados das tabelas 2 e 3 que possuia uma tag distinta dos outros dados 2) as outras colunas com tags iguais e
+# depois juntar as duas
 def armazena_linha_tabela2 (linha_tabela, tag1, tag2):
-    copia_linha_tabela = linha_tabela
-    linha_tabela1 = armazena_linha_tabela(copia_linha_tabela, tag1)
-    copia_linha_tabela = linha_tabela
-    linha_tabela2 = armazena_linha_tabela(copia_linha_tabela, tag2)
+    linha_tabela1 = armazena_linha_tabela(linha_tabela, tag1)
+    linha_tabela2 = armazena_linha_tabela(linha_tabela, tag2)
     linha_tabela = linha_tabela2
-    print(linha_tabela)
     linha_tabela.insert(0, linha_tabela1[0])
     
     return (linha_tabela)
@@ -49,7 +47,7 @@ info_tabela2 = [[29, "b"],
                 [35, "a", "font"],
                 [36, "a", "font"],
                 [37, "a", "font"],
-                [38, "a", "font"]]
+                [38, "font"]]
 
 # Igual a info_tabela2
 info_tabela3 = [[56, "b"],
@@ -60,7 +58,10 @@ info_tabela3 = [[56, "b"],
                 [61, "a", "font"],
                 [62, "a", "font"],
                 [63, "a", "font"],
-                [64, "a", "font"]]
+                [64, "font"]]
+
+# Criação de uma lista as informações de todas as tabelas
+info_tabelas = [info_tabela1, info_tabela2, info_tabela3]
 
 # Download da página e leitura do seu conteúdo html
 page = requests.get("http://www2.aneel.gov.br/aplicacoes/capacidadebrasil/capacidadebrasil.cfm")
@@ -75,14 +76,14 @@ indice_tabelas = 3
 # Seleciona todas as linhas das três tabelas de interesse a partir da tag tr
 linhas_tabelas = tabelas[indice_tabelas].find_all("tr")
 
+# Aquisição e limpeza de todas as linhas das três tabelas de interesse
+for info_tabela in info_tabelas:
+    for linha in info_tabela:
+        if len(linha) == 2:
+            linhas_tabelas[linha[0]] = armazena_linha_tabela(linhas_tabelas[linha[0]], linha[1])
+        else:
+            linhas_tabelas[linha[0]] = armazena_linha_tabela2(linhas_tabelas[linha[0]], linha[1], linha[2])
 
-a = armazena_linha_tabela2(linhas_tabelas[58], "a", "font")
-print(a)
-
-'''
-for item in info_tabela2:
-    linhas_tabelas[item[0]] = armazena_linha_tabela(linhas_tabelas[item[0]], item[1])
-
-for item in info_tabela2:
-    print(linhas_tabelas[item[0]])
-'''
+for info_tabela in info_tabelas:
+    for linha in info_tabela:
+        print(linhas_tabelas[linha[0]])
