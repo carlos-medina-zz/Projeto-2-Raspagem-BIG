@@ -36,8 +36,8 @@ info_tabela1 = [[1, "b"],
                 [10, "font"],
                 [11, "font"]]
 
-# Similar a info_tabela1, porém, com listas que possuem três itens.
-# O segundo item é a tag da primeira coluna das linhas de dados enquanto o terceiro item é a tag das outras colunas
+# Similar a info_tabela1, porém, com dois tipos de listas: uma com dois e outra com três itens.
+# Quando há três itens, o segundo refere-se a tag da primeira coluna das linhas de dados enquanto o terceiro é a tag das outras colunas
 info_tabela2 = [[29, "b"],
                 [30, "font"],
                 [31, "a", "font"],
