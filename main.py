@@ -1,3 +1,4 @@
+import raspagem
 from raspagem import Raspagem
 import numpy as np
 import pandas as pd

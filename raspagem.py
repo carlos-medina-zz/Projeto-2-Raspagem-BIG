@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 # Função que armazena uma linha da tabela. Ela recebe a linha a ser armazenada e a tag na qual ela se encontra
 # Ela também limpa os dados que não são de interesse e retira espaços extras em branco e lineskips
-def armazena_linha_tabela (linha_tabela, tag):
+def Armazena_linha_tabela (linha_tabela, tag):
     linha_tabela = linha_tabela.find_all(tag)
     linha_tabela = [item.get_text() for item in linha_tabela]
     linha_tabela = [" ".join(item.split()) for item in linha_tabela]
@@ -13,9 +13,9 @@ def armazena_linha_tabela (linha_tabela, tag):
 # Função similar a armazena_linha_tabela mas que recebe duas tags. Criada para 1) ler a primeira coluna das linhas
 # de dados das tabelas 2 e 3 que possui uma tag distinta dos outros dados 2) ler as outras colunas que possuem só uma tag
 # 3) juntar as duas leituras em uma única variável
-def armazena_linha_tabela2 (linha_tabela, tag1, tag2):
-    linha_tabela1 = armazena_linha_tabela(linha_tabela, tag1)
-    linha_tabela2 = armazena_linha_tabela(linha_tabela, tag2)
+def Armazena_linha_tabela2 (linha_tabela, tag1, tag2):
+    linha_tabela1 = Armazena_linha_tabela(linha_tabela, tag1)
+    linha_tabela2 = Armazena_linha_tabela(linha_tabela, tag2)
     linha_tabela = linha_tabela2
     linha_tabela.insert(0, linha_tabela1[0])
     
@@ -23,8 +23,11 @@ def armazena_linha_tabela2 (linha_tabela, tag1, tag2):
 
 # Função que extrai todas as linhas relevantes das tabelas e as armazenam em uma única lista por tabela
 def tabela_lista(linhas_tabelas, info_tabelas):
+
+    # Lista (1) de listas (2). Em (1) cada elemento é uma tabela e em (2) cada elemento é uma linha da tabela
+    lista_tabelas = [ [] for i in range(len(info_tabelas)) ]
     
-    return
+    return (lista_tabelas)
 
 # Função principal do código
 def Raspagem():
@@ -88,8 +91,8 @@ def Raspagem():
     for info_tabela in info_tabelas:
         for linha in info_tabela:
             if len(linha) == 2:
-                linhas_tabelas[linha[0]] = armazena_linha_tabela(linhas_tabelas[linha[0]], linha[1])
+                linhas_tabelas[linha[0]] = Armazena_linha_tabela(linhas_tabelas[linha[0]], linha[1])
             else:
-                linhas_tabelas[linha[0]] = armazena_linha_tabela2(linhas_tabelas[linha[0]], linha[1], linha[2])
+                linhas_tabelas[linha[0]] = Armazena_linha_tabela2(linhas_tabelas[linha[0]], linha[1], linha[2])
 
     return (info_tabelas, linhas_tabelas)
