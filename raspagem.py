@@ -21,6 +21,11 @@ def armazena_linha_tabela2 (linha_tabela, tag1, tag2):
     
     return (linha_tabela)
 
+# Função que extrai todas as linhas relevantes das tabelas e as armazenam em uma única lista por tabela
+def tabela_lista(linhas_tabelas, info_tabelas):
+    
+    return
+
 # Função principal do código
 def Raspagem():
 

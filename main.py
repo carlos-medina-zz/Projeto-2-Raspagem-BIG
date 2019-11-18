@@ -4,9 +4,13 @@ import pandas as pd
 
 info_tabelas, linhas_tabelas = Raspagem()
 
-for info_tabela in info_tabelas:
-    for linha in info_tabela:
-        print(linhas_tabelas[linha[0]])
+a = [1, 2, 3]
+b = [4, 5, 6]
+
+lista = [a, b]
+
+print(lista)
+
 
 '''
 lista_tabelas = [ [] for i in range(3) ]
