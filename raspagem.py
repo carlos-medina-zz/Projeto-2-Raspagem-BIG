@@ -10,9 +10,9 @@ def Armazena_linha_tabela (linha_tabela, tag):
 
     return (linha_tabela)
 
-# Função similar a armazena_linha_tabela mas que recebe duas tags. Criada para 1) ler a primeira coluna das linhas
-# de dados das tabelas 2 e 3 que possui uma tag distinta dos outros dados 2) ler as outras colunas que possuem só uma tag
-# 3) juntar as duas leituras em uma única variável
+# Função similar a Armazena_linha_tabela mas que recebe duas tags. Criada para (1) ler a primeira coluna das linhas
+# de dados das tabelas 2 e 3 que possui uma tag distinta dos outros dados (2) ler as outras colunas que possuem só uma tag
+# (3) juntar as duas leituras em uma única variável
 def Armazena_linha_tabela2 (linha_tabela, tag1, tag2):
     linha_tabela1 = Armazena_linha_tabela(linha_tabela, tag1)
     linha_tabela2 = Armazena_linha_tabela(linha_tabela, tag2)
@@ -22,11 +22,17 @@ def Armazena_linha_tabela2 (linha_tabela, tag1, tag2):
     return (linha_tabela)
 
 # Função que extrai todas as linhas relevantes das tabelas e as armazenam em uma única lista por tabela
-def tabela_lista(linhas_tabelas, info_tabelas):
+def Tabela_lista(info_tabelas, linhas_tabelas):
 
     # Lista (1) de listas (2). Em (1) cada elemento é uma tabela e em (2) cada elemento é uma linha da tabela
     lista_tabelas = [ [] for i in range(len(info_tabelas)) ]
     
+    contador_tabela = 0
+    for info_tabela in info_tabelas:
+        for linha in info_tabela:
+            lista_tabelas[contador_tabela].append(linhas_tabelas[linha[0]])
+        contador_tabela += 1
+
     return (lista_tabelas)
 
 # Função principal do código
@@ -96,3 +102,12 @@ def Raspagem():
                 linhas_tabelas[linha[0]] = Armazena_linha_tabela2(linhas_tabelas[linha[0]], linha[1], linha[2])
 
     return (info_tabelas, linhas_tabelas)
+
+# Caso raspagem.py for rodada diretamente, testa a função tabela_lista
+if __name__ == "__main__":
+    info_tabelas, linhas_tabelas = Raspagem()
+    lista_tabelas = Tabela_lista(info_tabelas, linhas_tabelas)
+    
+    print("\n")
+    for lista in lista_tabelas:
+        print(lista, "\n")
