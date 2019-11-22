@@ -103,7 +103,8 @@ def Raspagem():
             else:
                 linhas_tabelas[linha[0]] = Armazena_linha_tabela2(linhas_tabelas[linha[0]], linha[1], linha[2])
 
-    return (info_tabelas, linhas_tabelas)
+    lista_tabelas = Tabela_lista(info_tabelas, linhas_tabelas)
+    return (lista_tabelas)
 
 # Caso raspagem.py for rodada diretamente, testa a função tabela_lista
 if __name__ == "__main__":
