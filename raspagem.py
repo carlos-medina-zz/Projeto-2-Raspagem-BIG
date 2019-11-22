@@ -36,6 +36,8 @@ def Tabela_lista(info_tabelas, linhas_tabelas):
     return (lista_tabelas)
 
 # Função principal do código
+# Acessa o site do BIG e armazena as três tabelas em uma lista de lista. Cada elemento da primeira lista contém uma
+# tabela e cada elemento da lista interna contém uma linha da tabela
 def Raspagem():
 
     # Lista que contém em cada elemento informações sobre cada linha da tabela. Cada elemento é outra lista
