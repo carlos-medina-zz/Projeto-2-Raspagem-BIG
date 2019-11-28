@@ -71,15 +71,30 @@ def CriaNomeArquivos(titulos_tabelas):
         # Adiciona a data atual no nome do arquivo
         today = date.today()
         today = str(today)
-        nome_arquivos[contador_nome] = nome_arquivos[contador_nome] + "_" + today
+        nome_arquivos[contador_nome] = nome_arquivos[contador_nome] + "_" + today + ".csv"
 
         contador_nome += 1
 
     return (nome_arquivos)
 
+# Salva o dataframe em .csv somente se não existir outro com o mesmo nome, ou seja, somente caso a ação não tenha sido
+# realizada no mesmo dia
+def SalvaTabela (df_list, nome_arquivos, local):
+    # Salva em uma lista os nomes de todos os dataframes salvos previamente em disco
+    dfs_antigos = os.listdir(local)
+
+    for indice in range(len(df_list)):
+        if nome_arquivos[indice] in dfs_antigos:
+            print("O dataframe {} já foi criado hoje" .format(nome_arquivos[indice]))
+        else:
+            nome = local + "\\" + nome_arquivos[indice]
+            df_list[indice].to_csv (nome, index = None, header=True)
+    
+    return ()
+
 # Código principal
 
-# Definição do local onde serão asmazenados os arquivos .csv
+# Definição do local onde são armazenados os arquivos .csv
 local = "C:\Dados_BIG"
 
 lista_tabelas = Raspagem()
@@ -87,4 +102,5 @@ lista_tabelas = Raspagem()
 df_list, titulos_tabelas = CriaDataframe(lista_tabelas)
 
 nome_arquivos = CriaNomeArquivos(titulos_tabelas)
-print(os.listdir(local))
+
+SalvaTabela(df_list, nome_arquivos, local)
