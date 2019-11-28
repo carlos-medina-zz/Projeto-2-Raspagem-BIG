@@ -13,6 +13,7 @@ colunas_tabelas = [ [] for i in range(len(lista_tabelas))]
 # Cria uma lista com 3 listas para armazenar os dataframes das tabelas
 df_list = [ [] for i in range(len(lista_tabelas))]
 
+
 # Extração, conversão e substituição de dados das tabelas
 contador_tabela = 0
 for tabela in lista_tabelas:
@@ -26,19 +27,29 @@ for tabela in lista_tabelas:
     # Extração das labels das colunas que consta na primeira posição da lista
     colunas_tabelas[contador_tabela] = lista_tabelas[contador_tabela].pop(0)
 
-    # Substitui todas as vírgulas por pontos e os pontos por vírgulas 
+    # Remove todos os pontos e substitui todas as vírgulas por pontos 
     for linha in range(len(tabela)):
         for item in range(len(tabela[linha])):
             if "," in tabela[linha][item]:
                 tabela[linha][item] = tabela[linha][item].replace(",", ".")
             else:
-                tabela[linha][item] = tabela[linha][item].replace(".", ",")
+                tabela[linha][item] = tabela[linha][item].replace(".", "")
 
     # Cria os dataframes
     df_list[contador_tabela] = pd.DataFrame(np.array(tabela), columns = colunas_tabelas[contador_tabela])
     
+    # Converte todos os dados numéricos que antes eram do tipo str para o tipo float
+    for coluna in colunas_tabelas[contador_tabela]:
+        if coluna == "Tipo":
+            pass
+        else:
+            df_list[contador_tabela][coluna] = df_list[contador_tabela][coluna].astype(float)
+    
     contador_tabela += 1
 
-print(df_list[0], "\n\n")
-print(df_list[1], "\n\n")
-print(df_list[2], "\n\n")
+
+
+
+print(df_list[0])
+print(df_list[1])
+print(df_list[2])
