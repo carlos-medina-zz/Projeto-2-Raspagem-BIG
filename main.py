@@ -48,8 +48,6 @@ for tabela in lista_tabelas:
     contador_tabela += 1
 
 
-
-
 print(df_list[0])
 print(df_list[1])
 print(df_list[2])
