@@ -4,20 +4,41 @@ import pandas as pd
 
 lista_tabelas = Raspagem()
 
+# Cria uma lista com 3 listas para armazenar os titulos das tabelas
+titulos_tabelas = [ [] for i in range(len(lista_tabelas))]
 
-tabela1 = lista_tabelas[0]
+# Cria uma lista com 3 listas para armazenar as labels das colunas
+colunas_tabelas = [ [] for i in range(len(lista_tabelas))]
 
-titulo_tabela1 = tabela1.pop(0)
+# Cria uma lista com 3 listas para armazenar os dataframes das tabelas
+df_list = [ [] for i in range(len(lista_tabelas))]
 
-colunas_tabela1 = tabela1.pop(0)
+# Extração, conversão e substituição de dados das tabelas
+contador_tabela = 0
+for tabela in lista_tabelas:
 
-# Substitui todas as vírgulas por pontos e os pontos por vírgulas
-for linha in range(len(tabela1)):
-    for item in range(len(tabela1[linha])):
-        if "," in tabela1[linha][item]:
-            tabela1[linha][item] = tabela1[linha][item].replace(",", ".")
-        else:
-            tabela1[linha][item] = tabela1[linha][item].replace(".", ",")
+    # Extração do título da tabela que consta na primeira posição da lista
+    titulos_tabelas[contador_tabela] = lista_tabelas[contador_tabela].pop(0)
+    
+    # Conversão da variável list para string extraindo o único elemento
+    titulos_tabelas[contador_tabela] = titulos_tabelas[contador_tabela][0]
 
-df = pd.DataFrame(np.array(tabela1), columns = colunas_tabela1)
-print(df)
+    # Extração das labels das colunas que consta na primeira posição da lista
+    colunas_tabelas[contador_tabela] = lista_tabelas[contador_tabela].pop(0)
+
+    # Substitui todas as vírgulas por pontos e os pontos por vírgulas 
+    for linha in range(len(tabela)):
+        for item in range(len(tabela[linha])):
+            if "," in tabela[linha][item]:
+                tabela[linha][item] = tabela[linha][item].replace(",", ".")
+            else:
+                tabela[linha][item] = tabela[linha][item].replace(".", ",")
+
+    # Cria os dataframes
+    df_list[contador_tabela] = pd.DataFrame(np.array(tabela), columns = colunas_tabelas[contador_tabela])
+    
+    contador_tabela += 1
+
+print(df_list[0], "\n\n")
+print(df_list[1], "\n\n")
+print(df_list[2], "\n\n")
