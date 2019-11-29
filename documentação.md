@@ -8,7 +8,7 @@
 - Depois de usar o método .select() num objeto da classe bs4.BeautifulSoup, ela o transforma numa lista. Isso impede que sejam usados outros métodos interessates das classes do Beaufiul Soup. Portanto, recomenda-se usar o método .find_all() que tem o mesmo resultado, porém, mantém o objeto como uma classe do Beautiful Soup;
 - Uma grande dificuldade encontrada foi a falta de padronização do formato das tabelas. A primeira tabela tem somente duas tags distintas: a primeira é 'b' para o título e a segundo é 'font'. Porém, quando tentou-se usar a mesma função para as tabelas 2 e 3, descobriu-se que as tabelas estavam em formatos diferentes. Para solucionar o problema, foi feita outra função que aceita duas tags e mescla o resultado final;
 
-### xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+### salvadados.py
 
 - Inicialmente, para trocar as vírgulas por pontos, foi utilizado o código abaixo:
 ```python
