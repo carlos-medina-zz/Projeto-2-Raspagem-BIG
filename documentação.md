@@ -21,3 +21,4 @@ Porém, percebeu-se que somente a variável item era alterada; a variável a qua
 ## Links utilizados
 
 - [Artigo - aprendendo sobre web scraping](https://imasters.com.br/back-end/aprendendo-sobre-web-scraping-em-python-utilizando-beautifulsoup)
+- [Exportar dataframe para csv](https://datatofish.com/export-dataframe-to-csv/)
